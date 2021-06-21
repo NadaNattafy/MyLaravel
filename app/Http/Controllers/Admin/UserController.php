@@ -40,10 +40,10 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'mobile' =>  'required',
-            'password' => 'required'
+            'name' => 'required|string',
+            'email' => 'required|string|email|max:255',
+            'mobile' =>  'required|string',
+            'password' => 'required|string'
         ]);
 
         User::create($request->all());
@@ -84,14 +84,14 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'mobile' => 'unique',
+            'email' => 'required|string|email|max:255',
+            'mobile' => 'required|string',
             'password' => 'required',
         ]);
 
         $user -> update($request->all());
 
-        return redirect()->route('users.index')->with('message','User Updated Successfully');
+        return redirect()->route('admin.users.index')->with('message','User Updated Successfully');
     }
 
     /**
