@@ -23,20 +23,22 @@
                 <ul class="nav navbar-nav navbar-left text-align-right">
                     <li class="{{Route::is('Gallery')?'active':''}}"><a href="{{ route('Gallery') }}">{{__('gallery')}}</a></li>
                     <li class="{{Route::is('Contact')?'active':''}}"><a href="{{ route('Contact') }}">{{__('contact')}}</a></li>
-                    {{-- @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                        <li><a
-                                href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">English</a>
-                        </li>
-                    @endforeach --}}
 
-                    @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                        <li>
-                            <a rel="alternate" hreflang="{{ $localeCode }}"
-                                href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                {{ $properties['native'] }}
-                            </a>
+                    <li>
+                      @if (app()->getLocale() == 'ar')
+                         <a rel="alternate" hreflang="en"
+                         href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}">
+                                                    English
+                         </a>
+                         @else
+                         <a rel="alternate" hreflang="ar"
+                         href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}">
+                                                    العربية
+                         </a>
+
+                        @endif
+
                         </li>
-                    @endforeach
                 </ul>
             </div>
         </div>

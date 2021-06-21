@@ -1,14 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Models\Customer;
 use App\Http\Controllers\Controller;
-use App\Models\Album;
 use Illuminate\Http\Request;
-use App\Models\Photo;
-use tidy;
 
-class PhotoController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +15,8 @@ class PhotoController extends Controller
     public function index()
     {
         //
-        $photos = Photo::get();
-       return view('admin.photos.index',compact('photos'));
+        $customers = Customer::get();
+       return view('admin.customers.index',compact('customers'));
     }
 
     /**
@@ -30,9 +27,9 @@ class PhotoController extends Controller
     public function create()
     {
         //
-        $albums=Album::all();
+        $customers=Customer::all();
 
-        return view('admin.photos.create', compact('albums'));
+        return view('admin.customers.create', compact('customers'));
     }
 
     /**
@@ -41,31 +38,23 @@ class PhotoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-
     public function store(Request $request)
-
     {
-
+        //
         $request->validate([
-
-            'title' => 'required',
-
-            'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'picture' => 'required',
 
         ]);
 
-       $photo = Photo::create($request->all());
+       $customer = Customer::create($request->all());
 
        if ($request->has('picture')) {
 
-        $photo->update(['picture' => $request->file('picture')->store('photoPics')]);
+        $customer->update(['picture' => $request->file('picture')->store('$photoPics')]);
        }
 
-       return redirect()->route('admin.photos.index')->with('message','Photo Created');
-
+       return redirect()->route('admin.customer.index')->with('message','Customer Created Successfully');
     }
-
 
     /**
      * Display the specified resource.
@@ -73,9 +62,11 @@ class PhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Photo $photo)
+    public function show(Customer $customer)
     {
-        return view('admin.photos.show',compact('photo'));
+        //
+        //dd($customer);
+        return view('admin.customers.show',compact('customer'));
     }
 
     /**
@@ -84,9 +75,10 @@ class PhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Photo $photo)
+    public function edit(Customer $customer)
     {
-        return view('admin.photos.edit',compact('photo'));
+        //
+        return view('admin.customers.edit', compact('customer'));
     }
 
     /**
@@ -96,22 +88,21 @@ class PhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Photo $photo)
+    public function update(Request $request, Customer $customer)
     {
+        //
         $request->validate([
-            'title' => 'required',
-            'picture' => 'nullable'
+            'picture' => 'required',
         ]);
 
-        // dd($request->all());
-        $photo -> update($request->all());
+        $customer -> update($request->all());
 
         if ($request->has('picture')) {
 
-         $photo->update(['picture' => $request->file('picture')->store('photoPics')]);
+         $customer->update(['picture' => $request->file('picture')->store('photoPics')]);
         }
 
-        return redirect()->route('admin.photos.index')->with('message','Photo Updated Successfully');
+        return redirect()->route('admin.customer.index')->with('message','Customer Updated Successfully');
     }
 
     /**
@@ -120,12 +111,12 @@ class PhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Photo $photo)
+    public function destroy(Customer $customer)
     {
-        $photo->delete();
+        //
+        $customer->delete();
 
-         return redirect()->route('admin.photos.index')
-                         ->with('message','Photo deleted successfully');
-      }
+        return redirect()->route('admin.customer.index')
+                        ->with('message','Customer deleted successfully');
+    }
 }
-

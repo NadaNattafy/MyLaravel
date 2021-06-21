@@ -32,7 +32,7 @@
                                 <td>
                                     {{-- <img src="{{url('/').'/storage/'.$album -> picture}}" style="height: 50px; width:50px;"> --}}
 
-                                        <a class="fancybox-buttons img-holder small-img" rel="gallery" title="" data-fancybox-group="button" src="{{url('/').'/storage/'.$album -> picture}}" style="height: 50px; width:50px;">
+                                        <a class="fancybox-buttons img-holder small-img" rel="gallery" title="" data-fancybox-group="button" href="{{url('/').'/storage/'.$album -> picture}}" style="height: 50px; width:50px;">
                                             <img src="{{url('/').'/storage/'.$album -> picture}}" style="height: 50px; width:50px;">
                                         </a>
 

@@ -16,8 +16,6 @@ class Company extends Model
         'email',
         'name_en',
         'category_en',
-        'mobile_en',
-        'email_en',
         'services_id',
         'picture'
     ];

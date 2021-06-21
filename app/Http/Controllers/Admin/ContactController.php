@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Website;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Album;
-use App\Models\Photo;
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use Illuminate\Http\Request;
 
-class PhotoController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,7 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        $photos = Photo::get();
-        return view('website.show',compact('photos'));
+        //
     }
 
     /**
@@ -25,9 +23,27 @@ class PhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+
+        $item=Company::find($id);
+        return view('website.company.replay',compact('item'));
+    }
+
+    public function send(Request $request)
+    {
+        //dd($request->message);
+
+        $details = [
+            'title' => 'Wellcom To Photomaker',
+            'body' => $request->message,
+        ];
+
+        \Mail::to('your_receiver_email@gmail.com')->send(new \App\Mail\Company($details));
+        
+
+        return back()->with('message', 'Email Sent successfully.');
+
     }
 
     /**
@@ -37,23 +53,8 @@ class PhotoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-
     {
-        $request->validate([
-            'name' => 'required',
-            'path' => 'required',
-
-        ]);
-
-       $photo = Photo::create($request->all());
-
-       if ($request->has('picture')) {
-
-        $photo->update(['picture' => $request->file('picture')->store('$photoPics')]);
-       }
-
-       return redirect()->route('website.show');
-
+        //
     }
 
     /**
@@ -64,9 +65,7 @@ class PhotoController extends Controller
      */
     public function show($id)
     {
-        // return view('website.show',compact('photo'));
-        $photos = Photo::find($id);
-        return view('website.photos.show',compact('photos'));
+        //
     }
 
     /**
@@ -87,21 +86,9 @@ class PhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Photo $photo)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'path' => 'required',
-        ]);
-
-        $photo -> update($request->all());
-
-        if ($request->has('picture')) {
-
-         $photo->update(['picture' => $request->file('picture')->store('photoPics')]);
-        }
-
-        return redirect()->route('website.show',$photo->id)->with('message','Photo Updated Successfully');
+        //
     }
 
     /**

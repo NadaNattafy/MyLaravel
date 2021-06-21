@@ -17,6 +17,7 @@
                         <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Name_En</th>
                             <th>service name</th>
                             <th>Actions</th>
                         </tr>
@@ -29,6 +30,7 @@
                             <tr>
 
                                 <td>{{$menu -> name}}</td>
+                                <td>{{$menu -> name_en}}</td>
                                 <td>{{$menu->service->name}}</td>
                                 <td>
                                     <a class="btn btn-info" href="{{ route('menu.show',$menu->id) }}">Show</a>

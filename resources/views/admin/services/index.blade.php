@@ -17,6 +17,7 @@
                         <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Name_En</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -27,6 +28,8 @@
 
                             <tr>
                                 <td>{{$service -> name}}</td>
+                                <td>{{$service -> name_en}}</td>
+
                                 <td>
                                     <a class="btn btn-info" href="{{ route('admin.services.show',$service->id) }}">Show</a>
                                     <a class="btn btn-primary" href="{{ route('admin.services.edit',$service->id) }}">Edit</a>

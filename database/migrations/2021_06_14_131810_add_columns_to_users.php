@@ -16,9 +16,6 @@ class AddColumnsToUsers extends Migration
         Schema::table('users', function (Blueprint $table) {
             //
             $table->string('name_en');
-            $table->string('email_en');
-            $table->string('mobile_en');
-            $table->string('password_en');
         });
     }
 

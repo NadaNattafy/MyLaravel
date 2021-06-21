@@ -76,16 +76,16 @@
 
 <div class="main-content">
     <div class="container">
-        <h1 class="main-heading">تواصل معنا</h1>
+        <h1 class="main-heading">{{__('contact us')}}</h1>
 
         <div class="row">
             <div class="col-xs-12 col-sm-8">
                 <form action="{{ route('Contact') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="text" placeholder="الاسم / الشركة" name="name">
-                    <input type="text" placeholder="نوع النشاط" name="category">
-                    <input type="tel" placeholder="رقم التواصل" name="mobile">
-                    <input type="email" placeholder="البريد الإلكتروني" name="email">
+                    <input type="text" placeholder="{{__('name / company')}}" name="name">
+                    <input type="text" placeholder="{{__('type activity')}}" name="category">
+                    <input type="tel" placeholder="{{__('contact number')}}" name="mobile">
+                    <input type="email" placeholder="{{__('e-mail')}}" name="email">
 
                     @if(session()->has('message'))
                        <div class="alert alert-success">
@@ -93,7 +93,7 @@
                        </div>
                     @endif
 
-                    <label>نوع الخدمة</label>
+                    <label>{{__('service type')}}</label>
 
                     <div class="row">
 
@@ -114,11 +114,11 @@
 
 
                          @if($menu->type == 'text')
-                         <label>اسم الخدمة</label>
+                         <label>{{__('service name')}}</label>
                          <input type="text"  name="services[{{$menu->id}}][value]" placeholder="text" value="{{$menu->name}}">
 
                          @elseif($menu->type == 'number')
-                         <label>عدد الصور</label>
+                         <label>{{__('number of photos')}}</label>
                          <input type="number" name="services[{{$menu->id}}][value]" placeholder="number" value="{{$menu->name}}">
 
                          @else
@@ -139,28 +139,28 @@
                     </div>
 
 
-                    <label>إرفاق ملف</label>
+                    <label>{{__('attach a file')}}</label>
                     <input type="file" placeholder="إرفاق ملف">
                     <div class="btn btn-white btn-block">
-                        <span><input type="submit" value="إرسال"></span>
+                        <span><input type="submit" value="{{__('send')}}"></span>
                     </div>
                 </form>
             </div>
 
             <div class="col-xs-12 col-sm-4">
                 <div class="box black-box text-center">
-                    <h3 class="main-heading">تفاصيل الاتصال</h3>
+                    <h3 class="main-heading">{{__('contact details')}}</h3>
 
                     <p><i class="fa fa-envelope-o right-fa"></i> Info@pmstu.com</p>
                     <p><i class="fa fa-phone right-fa"></i> 0123456789</p>
                 </div>
                 <div class="box black-box text-center">
-                    <h3 class="main-heading">إشترك معنا</h3>
+                    <h3 class="main-heading"> {{__('contact us')}}</h3>
 
                     <form>
-                        <input type="email" placeholder="بريدك الالكتروني">
+                        <input type="email" placeholder="{{__('e-mail')}}">
                         <div class="btn btn-white btn-block">
-                            <span><input type="submit" value="إشترك معنا"></span>
+                            <span><input type="submit" value="{{__('contact us')}}"></span>
                         </div>
                     </form>
                 </div>

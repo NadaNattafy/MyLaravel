@@ -32,12 +32,28 @@ class CompanyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        $services = Services::all();
-        $menus = Menu::all();
+     {
+    $company = Company::get();
 
-        return view('website.contact', compact('menus', 'services'));
-    }
+    $services = Services::get();
+
+    return view('website.contact', compact('company', 'services'));
+}
+
+// public function create()
+// {
+
+//     return view('website.company.replay');
+// }
+
+// public function send()
+// {
+// request()->validate((['email' => 'required|email']));
+
+//     return redirect()->back();
+// }
+
+
 
     /**
      * Store a newly created resource in storage.

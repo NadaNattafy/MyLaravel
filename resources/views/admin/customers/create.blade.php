@@ -6,15 +6,15 @@
     <div class="row">
         <div class="col-12">
             <div class="card-box">
-                <h4 class="mt-0 header-title">Menu</h4>
+                <h4 class="mt-0 header-title">Customers</h4>
 
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Add New Menu</h2>
+            <h2>Add New Customer</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('menu.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('admin.customer.index') }}"> Back</a>
         </div>
     </div>
 </div>
@@ -29,40 +29,17 @@
     </div>
 @endif
 
-<form action="{{ route('menu.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('admin.customer.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
      <div class="row">
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Name:</strong>
-                <input type="text" name="name" class="form-control" placeholder="Name">
+              <strong>Picture:</strong>
+              <input type="file" name="picture" class="w-20 mb-8 shadow-xl" alt="" src=<img src="{{asset("storage/photo->picture")}}">
             </div>
         </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Type:</strong>
-                <input type="type" name="type" class="form-control" placeholder="Type">
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Name_En:</strong>
-                <input type="text" name="name_en" class="form-control" placeholder="Name_En">
-            </div>
-        </div>
-
-    </div>
-
-        <select name="services_id" class="form-control">
-            @foreach($services  as $service)
-
-                <option value="{{ $service->id }} ">{{ $service->name }}</option>
-            @endforeach
-        </select>
 
         @if(session()->has('message'))
                        <div class="alert alert-success">
@@ -78,7 +55,6 @@
 </div>
 </div>
 </form>
-
 @endsection
 
 @push('script')

@@ -30,7 +30,12 @@
 
                             <tr>
                                 <td>{{$photo -> title}}</td>
-                                <td><img src="{{url('/').'/storage/'.$photo -> picture}}" style="height: 50px; width:50px;"></td>
+                                <td>
+                                    {{-- <img src="{{url('/').'/storage/'.$photo -> picture}}" style="height: 50px; width:50px;"> --}}
+                                    <a class="fancybox-buttons img-holder small-img" rel="gallery" title="" data-fancybox-group="button" href="{{url('/').'/storage/'.$photo -> picture}}" style="height: 50px; width:50px;">
+                                        <img src="{{url('/').'/storage/'.$photo -> picture}}" style="height: 50px; width:50px;">
+                                    </a>
+                                </td>
                                 <td>{{$photo -> album -> title}}</td>
                                 <td>
                                     <a class="btn btn-info" href="{{ route('admin.photos.show',$photo->id) }}">Show</a>

@@ -54,7 +54,8 @@ class MenuController extends Controller
         ]);
         Menu::create($request->all());
 
-        return back()->with('message','Menu created successfully.');
+      //  return back()->with('message','Menu created successfully.');
+        return redirect()->route('admin.customer.index')->with('message','Menu created successfully.');
 
     }
 
@@ -91,12 +92,11 @@ class MenuController extends Controller
     {
             $request->validate([
                 'name' => 'required',
-                'type'=> 'required'
             ]);
 
             $menu -> update($request->all());
 
-            return redirect()->route('website.menu.show')->with('message','Menu Updated Successfully');
+            return redirect()->route('admin.menu.index')->with('message','Menu Updated Successfully');
 
     }
 

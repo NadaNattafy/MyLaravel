@@ -6,46 +6,37 @@
         <div class="row">
             <div class="col-12">
                 <div class="card-box">
-                    <h4 class="mt-0 header-title">Company</h4>
+                    <h4 class="mt-0 header-title">Customers</h4>
                     @if(session()->has('message'))
                     <div class="alert alert-success">
                          {{ session()->get('message') }}
                     </div>
-                    @endif
-
+                 @endif
                     <table id="datatable" class="table table-bordered dt-responsive nowrap">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Category</th>
-                            <th>Mobile</th>
-                            <th>Email</th>
-                            <th>Service Name</th>
+                            <th>Picture</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
 
-                        <tbody>
 
-                            @foreach ($company as $company)
+                        <tbody>
+                            @foreach ( $customers as $customer)
 
                             <tr>
-                                <td>{{$company-> name}}</td>
-                                <td>{{$company-> category}}</td>
-                                <td>{{$company-> mobile}}</td>
-                                <td>{{$company-> email}}</td>
                                 <td>
-                            @foreach ($company->Services as $companyservice)
-                                        <li>{{$companyservice->name}} : {{$companyservice->pivot->value}}</li>
-                            @endforeach
+                                    {{-- <img src="{{url('/').'/storage/'.$album -> picture}}" style="height: 50px; width:50px;"> --}}
+
+                                        <a class="fancybox-buttons img-holder small-img" rel="gallery" title="" data-fancybox-group="button" href="{{url('/').'/storage/'.$customer-> picture}}" style="height: 50px; width:50px;">
+                                            <img src="{{url('/').'/storage/'.$customer -> picture}}" style="height: 50px; width:50px;">
+                                        </a>
+
                                 </td>
-
                                 <td>
-                                    <a class="btn btn-info" href="{{ route('admin.company.show',$company->id) }}">Show</a>
-                                    {{-- <a class="btn btn-primary" href="{{ route('admin.company.edit',$company->id) }}">Edit</a> --}}
-                                    <a class="btn btn-primary" href={{ route ("admin.contact.create",$company->id)}}>Replay</a>
-
-                                    <form action="{{ route('admin.company.destroy',$company->id) }}" method="POST">
+                                    <a class="btn btn-info" href="{{ route('admin.customer.show',$customer->id) }}">Show</a>
+                                       <a class="btn btn-primary" href="{{ route('admin.customer.edit',$customer->id) }}">Edit</a>
+                                   <form action="{{ route('admin.customer.destroy',$customer->id) }}" method="POST">
 
                                        @csrf
                                        @method('DELETE')
@@ -55,6 +46,7 @@
 
                             </tr>
                             @endforeach
+
 
                         </tbody>
                     </table>

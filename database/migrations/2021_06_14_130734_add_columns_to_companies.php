@@ -17,8 +17,6 @@ class AddColumnsToCompanies extends Migration
             //
             $table->string('name_en');
             $table->string('category_en');
-            $table->string('mobile_en');
-            $table->string('email_en');
         });
     }
 

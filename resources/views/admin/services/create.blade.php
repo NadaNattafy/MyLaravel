@@ -29,6 +29,9 @@
     </div>
 @endif
 
+{{-- <textarea class="form-control" id="summary-ckeditor" name="summary-ckeditor"></textarea> --}}
+
+
 <form action="{{ route('admin.services.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 

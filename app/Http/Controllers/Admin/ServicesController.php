@@ -93,7 +93,7 @@ class ServicesController extends Controller
 
         $services -> update($request->all());
 
-        return redirect()->route('admin.services.show')->with('message','Service Updated Successfully');
+        return redirect()->route('admin.services.index')->with('message','Service Updated Successfully');
     }
 
     /**

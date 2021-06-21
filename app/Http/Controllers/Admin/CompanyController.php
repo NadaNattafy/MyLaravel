@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Website;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Album;
-use App\Models\Photo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PhotoController extends Controller
+class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,7 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        $photos = Photo::get();
-        return view('website.show',compact('photos'));
+        //
     }
 
     /**
@@ -27,7 +24,15 @@ class PhotoController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('website.company.replay');
+    }
+
+    public function send()
+    {
+    request()->validate((['email' => 'required|email']));
+
+        return redirect()->back();
     }
 
     /**
@@ -37,23 +42,8 @@ class PhotoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-
     {
-        $request->validate([
-            'name' => 'required',
-            'path' => 'required',
-
-        ]);
-
-       $photo = Photo::create($request->all());
-
-       if ($request->has('picture')) {
-
-        $photo->update(['picture' => $request->file('picture')->store('$photoPics')]);
-       }
-
-       return redirect()->route('website.show');
-
+        //
     }
 
     /**
@@ -64,9 +54,7 @@ class PhotoController extends Controller
      */
     public function show($id)
     {
-        // return view('website.show',compact('photo'));
-        $photos = Photo::find($id);
-        return view('website.photos.show',compact('photos'));
+        //
     }
 
     /**
@@ -87,21 +75,9 @@ class PhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Photo $photo)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'path' => 'required',
-        ]);
-
-        $photo -> update($request->all());
-
-        if ($request->has('picture')) {
-
-         $photo->update(['picture' => $request->file('picture')->store('photoPics')]);
-        }
-
-        return redirect()->route('website.show',$photo->id)->with('message','Photo Updated Successfully');
+        //
     }
 
     /**

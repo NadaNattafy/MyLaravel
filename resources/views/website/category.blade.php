@@ -14,7 +14,7 @@
 
 <div class="main-content">
     <div class="container-fluid">
-        <h1 class="main-heading">اسم القسم</h1>
+        <h1 class="main-heading">{{__('part name')}}</h1>
 
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">

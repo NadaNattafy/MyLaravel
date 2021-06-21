@@ -86,6 +86,31 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="mdi mdi-view-list"></i>
+                        <span> Customers</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{{route('admin.customer.index')}}">Index Customer</a></li>
+                        <li><a href="{{route('admin.customer.create')}}">Create Customer</a></li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="mdi mdi-view-list"></i>
+                        <span> Settings </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{{route('admin.setting.index')}}">Index Settings</a></li>
+                        {{-- <li><a href="{{route('admin.setting.create')}}">Create Settings</a></li> --}}
+                    </ul>
+                </li>
+
             </ul>
 
         </div>

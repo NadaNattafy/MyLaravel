@@ -59,7 +59,7 @@ public function store(Request $request)
         $album->update(['picture' => $request->file('picture')->store('albumPics')]);
        }
 
-       return redirect()->route('albums.index')->with('message','Album Created');
+       return redirect()->route('admin.albums.index')->with('message','Album Created');
 
     }
 
@@ -116,7 +116,7 @@ public function show(Album $album)
          $album->update(['picture' => $request->file('picture')->store('albumPics')]);
         }
 
-        return redirect()->route('albums.index')->with('message','Album Updated Successfully');
+        return redirect()->route('admin.albums.index')->with('message','Album Updated Successfully');
     }
 
 
@@ -131,7 +131,7 @@ public function show(Album $album)
     {
         $album->delete();
 
-         return redirect()->route('albums.index')
+         return redirect()->route('admin.albums.index')
                          ->with('message','Album deleted successfully');
       }
 }
