@@ -25,7 +25,7 @@
             <p>الإبداع مزيج بين المنطق والخيال ... هكذا نحن </p>
 
             {{-- <a href="{{route('company profile')}}" target="_blank" class="btn btn-white margin"><span>{{__('download company profile')}}</span></a> --}}
-            <a href="{{getsetting('company profile')}}" target="_blank" download>
+            <a href="{{getsetting('company profile')}}" class="btn btn-white margin" target="_blank" download>
                 <i class="fas fa-file-download"></i>
                 <span>{{__('download company profile')}}</span>
             </a>

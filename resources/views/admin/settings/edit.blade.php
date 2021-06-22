@@ -35,6 +35,7 @@
 
                         @method('PUT')
                         <div class="row">
+
                             {{-- <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Name:</strong>
@@ -55,8 +56,9 @@
                                 <div class="form-group">
                                     <strong>Value:</strong>
                                     @if ($setting->type == 'long_text')
-                                        <input type="textarea" name="value" value="{{ $setting->value }}"
+                                        <input type="textarea" id="summary-ckeditor" name="summary-ckeditor" value="{{ $setting->value }}"
                                             class="form-control" placeholder="value">
+                                            {{-- <textarea class="form-control" id="summary-ckeditor" name="summary-ckeditor"></textarea> --}}
 
                                     @elseif($setting->type == 'text')
                                         <input type="file" name="value" value="{{ $setting->value }}" class="form-control"
@@ -99,3 +101,21 @@
         </form>
 
     @endsection
+
+    @push('script')
+
+    <script src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+    <script>
+    CKEDITOR.replace( 'summary-ckeditor' );
+    </script>
+
+        <script type="text/javascript">
+        $(document).ready(function () {
+            $('.ckeditor').ckeditor();
+        });
+    </script>
+
+    @endpush
+
+

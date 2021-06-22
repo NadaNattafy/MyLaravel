@@ -62,21 +62,21 @@ Route::group(
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function(){
 
-        Route::get('photomaker/about', function () {
+        Route::get('about', function () {
             return view('website.about');
         })->name('About');
 
-        Route::get('photomaker/gallery', [AlbumController::class,'index'])->name('Gallery');
+        Route::get('gallery', [AlbumController::class,'index'])->name('Gallery');
 
-        Route::get('photomaker/show/{id}', [AlbumController::class,'show'])->name('Show');
+        Route::get('show/{id}', [AlbumController::class,'show'])->name('Show');
 
-        Route::get('photomaker/about', [AboutController::class,'index'])->name('About');
+        Route::get('about', [AboutController::class,'index'])->name('About');
 
-        Route::get('photomaker/show/{id}/customer', [AboutController::class,'show'])->name('Show.customer');
+        Route::get('show/{id}/customer', [AboutController::class,'show'])->name('Show.customer');
 
-        Route::get('photomaker/contact', [CompanyController::class,'create'])->name('Contact');
+        Route::get('contact', [CompanyController::class,'create'])->name('Contact');
 
-        Route::post('photomaker/contact', [CompanyController::class,'store'])->name('Contact.store');
+        Route::post('contact', [CompanyController::class,'store'])->name('Contact.store');
 
         // Route::resource('company', CompanyController::class);
 
@@ -86,15 +86,15 @@ Route::group(
    Route::resource('menu', Website\MenuController::class);
 
 
-        Route::get('photomaker/services', function () {
+        Route::get('services', function () {
             return view('website.services');
         })->name('Services');
 
-        Route::get('photomaker/category', function () {
+        Route::get('category', function () {
             return view('website.category');
         })->name('Category');
 
-        Route::get('photomaker/home', function () {
+        Route::get('home', function () {
             return view('website.index');
         })->name('Index');
 
